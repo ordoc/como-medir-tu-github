@@ -1,0 +1,58 @@
+{
+  "name": "Como medir tu GitHub",
+  "dataColors": [
+    "#1F3864",
+    "#2E75B6",
+    "#17A2A2",
+    "#8E5EA2",
+    "#E0A100",
+    "#7F8C9A",
+    "#2E8B57",
+    "#A94442",
+    "#8DB3E2"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1F2937",
+  "tableAccent": "#1F3864",
+  "good": "#2E8B57",
+  "neutral": "#E0A100",
+  "bad": "#C0392B",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#1F2937"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 22,
+      "color": "#1F3864"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#1F3864"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 11,
+      "color": "#1F3864"
+    }
+  },
+  "visualStyles": {
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F3F5F9"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

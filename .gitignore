@@ -1,0 +1,10 @@
+# Power BI: configuración y caché locales (pueden contener rutas y datos)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.pbix
+
+# Extractor: caché incremental y salida con datos reales
+.cache_detalle.json
+Datos_reales/
+
+__pycache__/

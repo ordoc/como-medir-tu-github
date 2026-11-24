@@ -1,0 +1,24 @@
+﻿repo_key,lenguaje,bytes,porcentaje
+TiendaDemo,TypeScript,230795,71.18
+TiendaDemo,CSS,57372,17.69
+TiendaDemo,HTML,36074,11.13
+InventarioAPI,Python,346600,72.75
+InventarioAPI,Shell,102118,21.43
+InventarioAPI,Dockerfile,27715,5.82
+GastosApp,Dart,79001,66.36
+GastosApp,Swift,25175,21.15
+GastosApp,Kotlin,14882,12.5
+PortafolioWeb,JavaScript,244125,64.54
+PortafolioWeb,CSS,100159,26.48
+PortafolioWeb,HTML,33982,8.98
+NotasDatos,Jupyter Notebook,268424,61.31
+NotasDatos,Python,111087,25.37
+NotasDatos,SQL,58292,13.31
+CursoSQL,SQL,180943,72.29
+CursoSQL,Python,69371,27.71
+ChatbotSoporte,Python,333522,67.01
+ChatbotSoporte,Dockerfile,112978,22.7
+ChatbotSoporte,TypeScript,51202,10.29
+cliente-1,CSS,393434,64.93
+cliente-1,PHP,161976,26.73
+cliente-1,JavaScript,50564,8.34

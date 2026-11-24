@@ -1,0 +1,49 @@
+table lenguajes_repo
+	lineageTag: 99691952-185b-4a95-830a-c321eee37238
+
+	column repo_key
+		dataType: string
+		lineageTag: 31717c94-032e-4e55-83f8-f0b3b66c040e
+		summarizeBy: none
+		sourceColumn: repo_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column lenguaje
+		dataType: string
+		lineageTag: a45b026e-f353-49ae-8223-0a726c0a9db0
+		summarizeBy: none
+		sourceColumn: lenguaje
+
+		annotation SummarizationSetBy = Automatic
+
+	column bytes
+		dataType: int64
+		formatString: 0
+		lineageTag: b6dbcec4-0a6c-4805-8dfb-f5e31733615a
+		summarizeBy: sum
+		sourceColumn: bytes
+
+		annotation SummarizationSetBy = Automatic
+
+	column porcentaje
+		dataType: int64
+		formatString: 0
+		lineageTag: aff9431f-9e7f-4a4f-8c59-9cd556c18162
+		summarizeBy: sum
+		sourceColumn: porcentaje
+
+		annotation SummarizationSetBy = Automatic
+
+	partition lenguajes_repo = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents(RutaDatos & "\lenguajes_repo.csv"), [Delimiter = ",", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"repo_key", type text}, {"lenguaje", type text}, {"bytes", Int64.Type}, {"porcentaje", Int64.Type}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 348.66676686301963,
+            "y": 179.32593562044394
+          },
+          "nodeIndex": "Calendario",
+          "nodeLineageTag": "ebaacda7-4a52-4934-a1cb-8e81bb137d72",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 159.32758795199919
+          },
+          "nodeIndex": "contribuciones_dia",
+          "nodeLineageTag": "a08e08fd-7578-48e7-a07f-40f7c23bd069",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 542.7719147342375,
+            "y": 618.53025267136854
+          },
+          "nodeIndex": "Dim_Hora",
+          "nodeLineageTag": "7a3d5e91-2b64-4c0f-9e18-a4f6d0c37b52",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 928.58795932622593,
+            "y": 136.26161053259057
+          },
+          "nodeIndex": "dim_repo",
+          "nodeLineageTag": "d2a7cca2-65b7-4304-a1c4-9108edec8345",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 638.62207752535687,
+            "y": 261.75604984764539
+          },
+          "nodeIndex": "fact_commits",
+          "nodeLineageTag": "3ba8e322-a3ab-4b26-9c48-b509903d5c6f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 336.72381109515834,
+            "y": -50
+          },
+          "nodeIndex": "lenguajes_repo",
+          "nodeLineageTag": "99691952-185b-4a95-830a-c321eee37238",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

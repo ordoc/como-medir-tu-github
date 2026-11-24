@@ -1,0 +1,20 @@
+relationship AutoDetected_330cd093-ea32-4d8b-b906-3f9b954aa86c
+	fromColumn: fact_commits.repo_key
+	toColumn: dim_repo.repo_key
+
+relationship AutoDetected_b4a4f8d3-f5e2-40f7-8377-fed3946aa9b1
+	fromColumn: lenguajes_repo.repo_key
+	toColumn: dim_repo.repo_key
+
+relationship 277027e0-a531-4350-beec-c82933d7e1bb
+	fromColumn: fact_commits.fecha
+	toColumn: Calendario.Fecha
+
+relationship c3127081-684e-4a79-8fb9-04f73c8de85b
+	fromColumn: contribuciones_dia.fecha
+	toColumn: Calendario.Fecha
+
+relationship 4e8b2c17-9a35-4d60-b7f1-3c0d5a92e684
+	fromColumn: fact_commits.hora_local
+	toColumn: Dim_Hora.Hora
+

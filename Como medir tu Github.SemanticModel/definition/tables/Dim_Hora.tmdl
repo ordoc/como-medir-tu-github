@@ -1,0 +1,24 @@
+table Dim_Hora
+	lineageTag: 7a3d5e91-2b64-4c0f-9e18-a4f6d0c37b52
+
+	column Hora
+		dataType: int64
+		formatString: 0
+		lineageTag: 91c4e7b2-5d08-4a36-b3f9-0e2a8d6c1f47
+		summarizeBy: none
+		sourceColumn: Hora
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Hora = m
+		mode: import
+		source =
+				let
+					Origen = List.Numbers(0, 24),
+					Tabla = Table.FromList(Origen, Splitter.SplitByNothing(), {"Hora"}, null, ExtraValues.Error),
+					Tipada = Table.TransformColumnTypes(Tabla, {{"Hora", Int64.Type}})
+				in
+					Tipada
+
+	annotation PBI_ResultType = Table
+

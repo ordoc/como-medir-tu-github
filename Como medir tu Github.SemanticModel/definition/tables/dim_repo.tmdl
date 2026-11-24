@@ -1,0 +1,130 @@
+table dim_repo
+	lineageTag: d2a7cca2-65b7-4304-a1c4-9108edec8345
+
+	column repo_key
+		dataType: string
+		lineageTag: 170be567-2e2e-4c86-90c4-a7cca2007351
+		summarizeBy: none
+		sourceColumn: repo_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column nombre_visible
+		dataType: string
+		lineageTag: 1009d51e-240f-49d8-a144-fc4733bf33b3
+		summarizeBy: none
+		sourceColumn: nombre_visible
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_repo
+		dataType: string
+		lineageTag: e7c26973-2aef-43a9-8693-47962deb74db
+		summarizeBy: none
+		sourceColumn: tipo_repo
+
+		annotation SummarizationSetBy = Automatic
+
+	column visibilidad
+		dataType: string
+		lineageTag: cf2bd948-ca00-4a4b-9d3e-2e9e343224c4
+		summarizeBy: none
+		sourceColumn: visibilidad
+
+		annotation SummarizationSetBy = Automatic
+
+	column lenguaje_principal
+		dataType: string
+		lineageTag: 478ecf3c-b81c-42c7-b3a2-7cc1de810cc6
+		summarizeBy: none
+		sourceColumn: lenguaje_principal
+
+		annotation SummarizationSetBy = Automatic
+
+	column commits
+		dataType: int64
+		formatString: 0
+		lineageTag: ec0fe5e5-d72a-49d1-bd76-35370f340c87
+		summarizeBy: none
+		sourceColumn: commits
+
+		annotation SummarizationSetBy = Automatic
+
+	column dias_activos
+		dataType: int64
+		formatString: 0
+		lineageTag: 7173721f-ee54-4671-bf7d-5e53ce77ded4
+		summarizeBy: none
+		sourceColumn: dias_activos
+
+		annotation SummarizationSetBy = Automatic
+
+	column primer_commit
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0464aa23-51ce-41a2-95cd-d365158c3023
+		summarizeBy: none
+		sourceColumn: primer_commit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ultimo_commit
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a43ab796-81bc-4530-b8d1-2a6bdc93f39b
+		summarizeBy: none
+		sourceColumn: ultimo_commit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column archivos
+		dataType: int64
+		formatString: 0
+		lineageTag: 0416e902-5be6-4e7e-a8fb-3de70032a472
+		summarizeBy: none
+		sourceColumn: archivos
+
+		annotation SummarizationSetBy = Automatic
+
+	column archivos_prueba
+		dataType: int64
+		formatString: 0
+		lineageTag: c6c9b562-b495-4439-97c3-5cadefb4969d
+		summarizeBy: none
+		sourceColumn: archivos_prueba
+
+		annotation SummarizationSetBy = Automatic
+
+	column workflows_ci
+		dataType: int64
+		formatString: 0
+		lineageTag: fa7b19b2-b0fa-49ee-b658-bcae6e19968e
+		summarizeBy: none
+		sourceColumn: workflows_ci
+
+		annotation SummarizationSetBy = Automatic
+
+	column color
+		dataType: string
+		lineageTag: 3c9e2f6a-8d41-4b57-a1e0-5f7b2c4d9a18
+		summarizeBy: none
+		sourceColumn: color
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_repo = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents(RutaDatos & "\dim_repo.csv"), [Delimiter = ",", Columns = 13, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"repo_key", type text}, {"nombre_visible", type text}, {"tipo_repo", type text}, {"visibilidad", type text}, {"lenguaje_principal", type text}, {"commits", Int64.Type}, {"dias_activos", Int64.Type}, {"primer_commit", type date}, {"ultimo_commit", type date}, {"archivos", Int64.Type}, {"archivos_prueba", Int64.Type}, {"workflows_ci", Int64.Type}, {"color", type text}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_ResultType = Table
+

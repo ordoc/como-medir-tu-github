@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Como medir tu Github"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1b6860b8-555e-4165-84d5-c2f56a27f121"
+  }
+}

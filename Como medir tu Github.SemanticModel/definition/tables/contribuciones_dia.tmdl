@@ -1,0 +1,40 @@
+table contribuciones_dia
+	lineageTag: a08e08fd-7578-48e7-a07f-40f7c23bd069
+
+	measure 'Total de Contribuciones' = SUM(contribuciones_dia[contribuciones])
+		formatString: #,0
+		displayFolder: 1 Volumen
+		lineageTag: 597a41f3-decf-47e2-82d3-e0b8fc2d87b8
+
+	column fecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1a5c8df8-d1db-48e4-b800-61845d563264
+		summarizeBy: none
+		sourceColumn: fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column contribuciones
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c396794-7a17-4a08-b885-7617e88fcb3f
+		summarizeBy: sum
+		sourceColumn: contribuciones
+
+		annotation SummarizationSetBy = Automatic
+
+	partition contribuciones_dia = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents(RutaDatos & "\contribuciones_dia.csv"), [Delimiter = ",", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"fecha", type date}, {"contribuciones", Int64.Type}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_ResultType = Table
+

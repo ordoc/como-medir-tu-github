@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Como medir tu Github"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3dd9e2ea-3928-431a-9325-c242368f1816"
+  }
+}

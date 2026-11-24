@@ -1,0 +1,110 @@
+table Calendario
+	lineageTag: ebaacda7-4a52-4934-a1cb-8e81bb137d72
+	dataCategory: Time
+
+	column Fecha
+		dataType: dateTime
+		isKey
+		formatString: dd/MM/yyyy
+		lineageTag: 9976978f-7852-451b-bd07-abd6596c9361
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Anio
+		dataType: int64
+		formatString: 0
+		lineageTag: 41970c34-fe81-4630-a0b7-24e130adab9f
+		summarizeBy: none
+		sourceColumn: Anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNum
+		dataType: int64
+		formatString: 0
+		lineageTag: c332d785-6bc3-42a4-929a-0e0e49051de3
+		summarizeBy: none
+		sourceColumn: MesNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: 242d7f2f-f611-4260-aa74-c71dc0366b23
+		summarizeBy: none
+		sourceColumn: Mes
+		sortByColumn: MesNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnioMes
+		dataType: string
+		lineageTag: 0ebd47fe-39ce-4eb8-bc1d-fe8d6978220a
+		summarizeBy: none
+		sourceColumn: AnioMes
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNum
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d400929-22c0-4648-b69f-d3dbd9a5ee15
+		summarizeBy: none
+		sourceColumn: DiaSemanaNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		dataType: string
+		lineageTag: c2aa765e-c1fd-437e-9ce2-cb5b7e58c6e3
+		summarizeBy: none
+		sourceColumn: DiaSemana
+		sortByColumn: DiaSemanaNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column InicioSemana
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 852490db-c914-4ec0-af41-5d037c90d17f
+		summarizeBy: none
+		sourceColumn: InicioSemana
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AnioTrimestre
+		dataType: string
+		lineageTag: 5b0c7d3e-1f64-4a8e-9c2d-7e3a6f1b4d90
+		summarizeBy: none
+		sourceColumn: AnioTrimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendario = m
+		mode: import
+		source =
+				let
+					Inicio = #date(2022, 1, 1),
+					Fin = Date.EndOfMonth(Date.From(DateTime.LocalNow())),
+					Dias = List.Dates(Inicio, Duration.Days(Fin - Inicio) + 1, #duration(1, 0, 0, 0)),
+					Tabla = Table.FromList(Dias, Splitter.SplitByNothing(), {"Fecha"}, null, ExtraValues.Error),
+					Tipada = Table.TransformColumnTypes(Tabla, {{"Fecha", type date}}),
+					Anio = Table.AddColumn(Tipada, "Anio", each Date.Year([Fecha]), Int64.Type),
+					MesNum = Table.AddColumn(Anio, "MesNum", each Date.Month([Fecha]), Int64.Type),
+					Mes = Table.AddColumn(MesNum, "Mes", each Text.Proper(Date.MonthName([Fecha], "es-CO")), type text),
+					AnioMes = Table.AddColumn(Mes, "AnioMes", each Date.ToText([Fecha], "yyyy-MM"), type text),
+					DiaSemanaNum = Table.AddColumn(AnioMes, "DiaSemanaNum", each Date.DayOfWeek([Fecha], Day.Monday) + 1, Int64.Type),
+					DiaSemana = Table.AddColumn(DiaSemanaNum, "DiaSemana", each Text.Proper(Date.DayOfWeekName([Fecha], "es-CO")), type text),
+					InicioSemana = Table.AddColumn(DiaSemana, "InicioSemana", each Date.StartOfWeek([Fecha], Day.Monday), type date),
+						AnioTrimestre = Table.AddColumn(InicioSemana, "AnioTrimestre", each Text.From(Date.Year([Fecha])) & "-T" & Text.From(Date.QuarterOfYear([Fecha])), type text)
+				in
+					AnioTrimestre
+
+	annotation PBI_ResultType = Table
+

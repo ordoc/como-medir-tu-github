@@ -1,0 +1,518 @@
+cultureInfo es-CO
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dim_repo.nombre_visible": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_repo",
+			          "ConceptualProperty": "nombre_visible"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Proyecto": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.primer_commit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Primer Commit"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Primer commit": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.ultimo_commit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Ultimo Commit"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Último commit": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.duracion_en_dias": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Duracion en Dias"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Duración (días)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.dias_activos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Dias Activos"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Días activos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.constancia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Constancia"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "calendario.iniciosemana": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "ConceptualProperty": "InicioSemana"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "dim_repo.tipo_repo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_repo",
+			          "ConceptualProperty": "tipo_repo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tipo de repositorio": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.anio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "ConceptualProperty": "Anio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Año": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.aniomes": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "ConceptualProperty": "AnioMes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Mes": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.barra_constancia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Barra Constancia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Constancia": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.barra_commits": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Barra Commits"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Commits": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.diasemana": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "ConceptualProperty": "DiaSemana"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Día": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.fecha": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "ConceptualProperty": "Fecha"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "fact_commits.hora_local": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "hora_local"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "fact_commits.tipo_cambio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "tipo_cambio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Tipo de cambio": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.commits_con_pruebas": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "% Commits con Pruebas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% pruebas": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.mediana_de_lineas_por_commit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Mediana de Lineas por Commit"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Líneas (med.)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.correcciones_por_funcionalidad": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Correcciones por Funcionalidad"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Ratio corr.": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.texto_contexto": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Texto Contexto"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "fact_commits.mensaje_resumen": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Mensaje Resumen"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Mensaje": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.mensaje_ritmo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Mensaje Ritmo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Mensaje": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.mensaje_calidad": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Mensaje Calidad"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Mensaje": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.mensaje_ia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Mensaje IA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Mensaje": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.aniotrimestre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Calendario",
+			          "ConceptualProperty": "AnioTrimestre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Trimestre": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fact_commits.commits_calor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fact_commits",
+			          "ConceptualProperty": "Commits Calor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Commits": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_hora.hora": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Dim_Hora",
+			          "ConceptualProperty": "Hora"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Hora": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

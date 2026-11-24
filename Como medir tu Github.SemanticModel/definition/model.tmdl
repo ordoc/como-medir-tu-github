@@ -1,0 +1,24 @@
+model Model
+	culture: es-CO
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["RutaDatos","contribuciones_dia","dim_repo","fact_commits","lenguajes_repo","Calendario","Dim_Hora"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table contribuciones_dia
+ref table dim_repo
+ref table fact_commits
+ref table lenguajes_repo
+ref table Calendario
+ref table Dim_Hora
+
+ref cultureInfo es-CO
+
