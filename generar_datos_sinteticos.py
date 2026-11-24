@@ -43,7 +43,7 @@ PROYECTOS = [
     dict(key="GastosApp", tipo="Aplicación propia (privada)", vis="Privado", leng="Dart",
          otros=["Kotlin", "Swift"], ini="2025-01-13", fin="2026-10-30", p=0.28, media=2.1, horas="mixto", finde=0.45,
          pruebas=0.25, ia_desde="2025-09-01", ia=0.35, issues=0.05, ci=1, archivos=(300, 520)),
-    dict(key="PortafolioWeb", tipo="Portafolio (público)", vis="Público", leng="JavaScript",
+    dict(key="BlogTecnico", tipo="Portafolio (público)", vis="Público", leng="JavaScript",
          otros=["HTML", "CSS"], ini="2025-03-03", fin="2026-10-10", p=0.11, media=1.8, horas="oficina", finde=0.5,
          pruebas=0.0, ia_desde="2026-01-01", ia=0.20, issues=0.0, ci=0, archivos=(35, 70),
          tipos={"Funcionalidad": 0.25, "Documentación": 0.32, "Mantenimiento": 0.2, "Corrección": 0.1, "Otro": 0.13}),

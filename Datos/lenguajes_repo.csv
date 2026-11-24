@@ -8,9 +8,9 @@ InventarioAPI,Dockerfile,27715,5.82
 GastosApp,Dart,79001,66.36
 GastosApp,Swift,25175,21.15
 GastosApp,Kotlin,14882,12.5
-PortafolioWeb,JavaScript,244125,64.54
-PortafolioWeb,CSS,100159,26.48
-PortafolioWeb,HTML,33982,8.98
+BlogTecnico,JavaScript,244125,64.54
+BlogTecnico,CSS,100159,26.48
+BlogTecnico,HTML,33982,8.98
 NotasDatos,Jupyter Notebook,268424,61.31
 NotasDatos,Python,111087,25.37
 NotasDatos,SQL,58292,13.31

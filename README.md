@@ -16,6 +16,12 @@ El informe tiene cuatro páginas:
 
 **Medir no es juzgar.** Los commits no miden productividad ni calidad. La cifra de IA es un **piso**: solo cuenta los commits donde la herramienta dejó su firma (`Co-Authored-By`), y un 0 % no prueba que no hubo ayuda. Los porcentajes de proyectos con menos de 10 commits se dejan en blanco. Cada página explica cómo leerla.
 
+## Vista previa (datos sintéticos)
+![Resumen: commits por trimestre, tabla de proyectos y ranking](docs/01-resumen.png)
+![Ritmo: mapa de calor por día y hora, y ráfagas por mes](docs/02-ritmo.png)
+![Calidad: mezcla de tipos de cambio y calidad por proyecto](docs/03-calidad.png)
+![IA: coautoría de IA declarada por proyecto y por trimestre](docs/04-ia.png)
+
 ## Probar el informe con los datos de ejemplo
 1. Abre `Como medir tu Github.pbip` con una versión reciente de Power BI Desktop. (Si no abre el formato de proyecto, actívalo en *Archivo > Opciones > Características en vista previa*.)
 2. En *Inicio > Transformar datos > Administrar parámetros*, cambia `RutaDatos` por la ruta de la carpeta `Datos` de este repositorio.
@@ -46,6 +52,9 @@ Después apunta `RutaDatos` a `Datos_reales` y pulsa *Actualizar*.
 
 ## Privacidad
 Los archivos de salida contienen solo conteos, fechas, horas y clasificaciones: sin mensajes de commits, nombres de archivos, correos ni nombres de personas. Aun así, **revisa tus CSV antes de publicarlos**. La carpeta `Datos_reales/` y la caché están en el `.gitignore`.
+
+## Licencia
+[MIT](LICENSE): puedes usar, copiar y modificar el código, incluido el modelo del informe, conservando el aviso de copyright.
 
 ## Contenido
 - `Como medir tu Github.pbip`, `.SemanticModel`, `.Report`: el informe y su modelo (formato de proyecto de Power BI).

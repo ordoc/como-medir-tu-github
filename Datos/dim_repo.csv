@@ -1,9 +1,9 @@
 ﻿repo_key,nombre_visible,tipo_repo,visibilidad,lenguaje_principal,commits,dias_activos,primer_commit,ultimo_commit,archivos,archivos_prueba,workflows_ci,color
 TiendaDemo,TiendaDemo,Aplicación propia (privada),Privado,TypeScript,214,86,2024-02-05,2024-09-26,317,38,2,#A94442
-InventarioAPI,InventarioAPI,Aplicación propia (privada),Privado,Python,118,41,2024-07-09,2025-04-07,125,20,1,#8E5EA2
-GastosApp,GastosApp,Aplicación propia (privada),Privado,Dart,252,160,2025-01-13,2026-10-30,315,62,1,#17A2A2
-PortafolioWeb,PortafolioWeb,Portafolio (público),Público,JavaScript,80,64,2025-03-04,2026-10-02,51,0,0,#7F8C9A
-NotasDatos,NotasDatos,Portafolio (público),Público,Jupyter Notebook,176,95,2025-05-15,2026-08-26,84,0,0,#E0A100
-CursoSQL,CursoSQL,Portafolio (público),Público,SQL,101,43,2024-10-07,2025-01-30,48,0,0,#2E75B6
-ChatbotSoporte,ChatbotSoporte,Aplicación propia (privada),Privado,Python,396,111,2026-03-02,2026-10-23,262,31,2,#1F3864
+InventarioAPI,InventarioAPI,Aplicación propia (privada),Privado,Python,118,41,2024-07-09,2025-04-07,125,20,1,#E0A100
+GastosApp,GastosApp,Aplicación propia (privada),Privado,Dart,252,160,2025-01-13,2026-10-30,315,62,1,#8E5EA2
+BlogTecnico,BlogTecnico,Portafolio (público),Público,JavaScript,80,64,2025-03-04,2026-10-02,51,0,0,#1F3864
+NotasDatos,NotasDatos,Portafolio (público),Público,Jupyter Notebook,176,95,2025-05-15,2026-08-26,84,0,0,#7F8C9A
+CursoSQL,CursoSQL,Portafolio (público),Público,SQL,101,43,2024-10-07,2025-01-30,48,0,0,#17A2A2
+ChatbotSoporte,ChatbotSoporte,Aplicación propia (privada),Privado,Python,396,111,2026-03-02,2026-10-23,262,31,2,#2E75B6
 cliente-1,Proyecto de cliente (consultoría),Proyecto de cliente (anónimo),Privado de terceros,CSS,83,75,2024-04-06,2026-05-18,566,0,0,#2E8B57
