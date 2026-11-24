@@ -116,11 +116,11 @@ table fact_commits
 		displayFolder: 4 IA
 		lineageTag: 6c7af782-5b6b-4934-8031-0b10ccb797de
 
-	measure 'Barra Commits' = VAR mx = MAXX(ALL(dim_repo[nombre_visible]), [Commits]) VAR n = MAX(1, ROUND(DIVIDE([Commits], mx) * 12, 0)) RETURN IF(ISBLANK([Commits]), BLANK(), REPT("■", n) & "  " & FORMAT([Commits], "#,0"))
+	measure 'Barra Commits' = VAR mx = MAXX(ALL(dim_repo[nombre_visible]), [Commits]) VAR n = MAX(1, ROUND(DIVIDE([Commits], mx) * 12, 0)) RETURN IF(ISBLANK([Commits]), BLANK(), REPT("■", n) & "  " & FORMAT([Commits], "#,0", "es-MX"))
 		displayFolder: 5 Visual
 		lineageTag: 9ac16e25-3545-4f69-be95-e23a06c829fd
 
-	measure 'Barra Constancia' = VAR c = [Constancia] VAR n = ROUND(c * 10, 0) RETURN IF(ISBLANK(c), BLANK(), REPT("■", n) & REPT("□", 10 - n) & "  " & FORMAT(c, "0%"))
+	measure 'Barra Constancia' = VAR c = [Constancia] VAR n = ROUND(c * 10, 0) RETURN IF(ISBLANK(c), BLANK(), REPT("■", n) & REPT("□", 10 - n) & "  " & FORMAT(c, "0%", "es-MX"))
 		displayFolder: 5 Visual
 		lineageTag: 304b2b50-7bc1-4164-92ee-e7a921e31a29
 
@@ -194,7 +194,7 @@ table fact_commits
 		displayFolder: 6 Titulos
 		lineageTag: 3e9a7c14-6b25-4d80-8f1c-a4d52b7e9013
 
-	measure 'Texto Contexto' = FORMAT([Commits], "#,0") & " commits · " & [Texto Anios] & " · " & [Texto Proyectos]
+	measure 'Texto Contexto' = FORMAT([Commits], "#,0", "es-MX") & " commits · " & [Texto Anios] & " · " & [Texto Proyectos]
 		isHidden
 		displayFolder: 6 Titulos
 		lineageTag: 29301f14-734c-4c12-9780-ec34bcfc6b87
@@ -214,22 +214,22 @@ table fact_commits
 		displayFolder: 3 Calidad
 		lineageTag: 2d6c1217-adec-4018-8f62-9de3d33f9e58
 
-	measure 'Mensaje Resumen' = FORMAT([Commits], "#,0") & " commits · " & [Texto Anios] & " · " & [Texto Proyectos]
+	measure 'Mensaje Resumen' = FORMAT([Commits], "#,0", "es-MX") & " commits · " & [Texto Anios] & " · " & [Texto Proyectos]
 		isHidden
 		displayFolder: 6 Titulos
 		lineageTag: 66a8b7cc-bd1d-4599-a9b1-e652764d064f
 
-	measure 'Mensaje Ritmo' = VAR dia = MAXX(TOPN(1, VALUES(Calendario[DiaSemana]), [Commits], DESC), Calendario[DiaSemana]) RETURN IF([Commits] = 0, "Sin datos", "Día más activo: " & LOWER(dia) & " · " & FORMAT([% Fuera de Horario Laboral], "0.0%") & " fuera de horario")
+	measure 'Mensaje Ritmo' = VAR dia = MAXX(TOPN(1, VALUES(Calendario[DiaSemana]), [Commits], DESC), Calendario[DiaSemana]) RETURN IF([Commits] = 0, "Sin datos", "Día más activo: " & LOWER(dia) & " · " & FORMAT([% Fuera de Horario Laboral], "0.0%", "es-MX") & " fuera de horario")
 		isHidden
 		displayFolder: 6 Titulos
 		lineageTag: 8ccbc45c-07f5-4554-ac09-32391035da79
 
-	measure 'Mensaje Calidad' = IF(ISBLANK([% Commits con Pruebas]), "Poca muestra: menos de " & [Muestra Minima] & " commits", FORMAT([% Commits con Pruebas], "0.0%") & " con pruebas · " & FORMAT([Correcciones por Funcionalidad], "0.00") & " correcciones/funcionalidad")
+	measure 'Mensaje Calidad' = IF(ISBLANK([% Commits con Pruebas]), "Poca muestra: menos de " & [Muestra Minima] & " commits", FORMAT([% Commits con Pruebas], "0.0%", "es-MX") & " con pruebas · " & FORMAT([Correcciones por Funcionalidad], "0.00", "es-MX") & " correcciones/funcionalidad")
 		isHidden
 		displayFolder: 6 Titulos
 		lineageTag: 4df21b82-8de2-4afa-af59-c957c597ac4b
 
-	measure 'Mensaje IA' = IF([Commits] = 0, "Sin datos", FORMAT([Commits con IA], "#,0") & " de " & FORMAT([Commits], "#,0") & " commits declaran coautoría de IA (" & FORMAT([% Coautoria de IA], "0.0%") & ")")
+	measure 'Mensaje IA' = IF([Commits] = 0, "Sin datos", FORMAT([Commits con IA], "#,0", "es-MX") & " de " & FORMAT([Commits], "#,0", "es-MX") & " commits declaran coautoría de IA (" & FORMAT([% Coautoria de IA], "0.0%", "es-MX") & ")")
 		isHidden
 		displayFolder: 6 Titulos
 		lineageTag: 8d2cf4ab-d946-4e11-87f1-0713d1601791
