@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "dda68bef7f7c6ba414b5",
   "position": {
-    "x": 768,
-    "y": 12,
-    "z": 950,
-    "height": 32,
-    "width": 120,
-    "tabOrder": 950
+    "x": 16,
+    "y": 4,
+    "z": 910,
+    "height": 48,
+    "width": 560,
+    "tabOrder": 910
   },
   "visual": {
     "visualType": "textbox",
@@ -17,14 +17,24 @@
           "properties": {
             "paragraphs": [
               {
-                "horizontalTextAlignment": "center",
                 "textRuns": [
                   {
-                    "value": "Resumen",
+                    "value": "Cómo medir tu GitHub",
                     "textStyle": {
-                      "fontSize": "10pt",
                       "fontWeight": "bold",
-                      "color": "#1F3864"
+                      "fontSize": "17pt",
+                      "color": "#FFFFFF"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Datos sintéticos · versión pública",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#DCE6F2"
                     }
                   }
                 ]
@@ -41,18 +51,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
+                  "Value": "false"
                 }
               }
             }

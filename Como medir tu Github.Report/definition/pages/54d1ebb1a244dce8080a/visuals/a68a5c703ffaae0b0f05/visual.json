@@ -2,40 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a68a5c703ffaae0b0f05",
   "position": {
-    "x": 894,
+    "x": 582,
     "y": 12,
-    "z": 951,
+    "z": 1000,
     "height": 32,
-    "width": 120,
-    "tabOrder": 951
+    "width": 132,
+    "tabOrder": 1000
   },
   "visual": {
-    "visualType": "textbox",
+    "visualType": "actionButton",
     "objects": {
-      "general": [
-        {
-          "properties": {
-            "paragraphs": [
-              {
-                "horizontalTextAlignment": "center",
-                "textRuns": [
-                  {
-                    "value": "Ritmo",
-                    "textStyle": {
-                      "fontSize": "10pt",
-                      "fontWeight": "normal",
-                      "color": "#FFFFFF"
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "visualContainerObjects": {
-      "background": [
+      "fill": [
         {
           "properties": {
             "show": {
@@ -45,27 +22,101 @@
                 }
               }
             },
-            "color": {
+            "fillColor": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#2B4A82'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
               }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "100D"
+                }
+              }
             }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "hover"
           }
         }
       ],
-      "border": [
+      "outline": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualLink": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'PageNavigation'"
+                }
+              }
+            },
+            "navigationSection": {
+              "expr": {
+                "Literal": {
+                  "Value": "'54d1ebb1a244dce8080a'"
                 }
               }
             }

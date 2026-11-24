@@ -5,7 +5,7 @@ Un informe de Power BI para entender **cómo trabajas** a partir de tus commits:
 > **Los datos de este repositorio son sintéticos.** Los proyectos, fechas y cifras son inventados para poder explorar el informe sin exponer la actividad de nadie.
 
 ## Qué mide, y qué no
-El informe tiene cuatro páginas:
+El informe tiene cinco páginas:
 
 | Página | Pregunta que responde |
 |---|---|
@@ -13,6 +13,7 @@ El informe tiene cuatro páginas:
 | **Ritmo** | ¿Cuándo trabajo (día y hora)? ¿Trabajo en ráfagas o de forma sostenida? |
 | **Calidad** | ¿Qué tipo de trabajo hago? ¿Toco pruebas? ¿Cuánto corrijo frente a lo que construyo? |
 | **IA** | ¿En cuántos commits declaré ayuda de IA y desde cuándo? |
+| **Cómo medir el tuyo** | Los cinco pasos para generar tus propios datos, con las notas de privacidad y de interpretación. |
 
 **Medir no es juzgar.** Los commits no miden productividad ni calidad. La cifra de IA es un **piso**: solo cuenta los commits donde la herramienta dejó su firma (`Co-Authored-By`), y un 0 % no prueba que no hubo ayuda. Los porcentajes de proyectos con menos de 10 commits se dejan en blanco. Cada página explica cómo leerla.
 
@@ -21,6 +22,7 @@ El informe tiene cuatro páginas:
 ![Ritmo: mapa de calor por día y hora, y ráfagas por mes](docs/02-ritmo.png)
 ![Calidad: mezcla de tipos de cambio y calidad por proyecto](docs/03-calidad.png)
 ![IA: coautoría de IA declarada por proyecto y por trimestre](docs/04-ia.png)
+![Cómo medir el tuyo: los cinco pasos para generar tus propios datos](docs/05-guia.png)
 
 ## Probar el informe con los datos de ejemplo
 1. Abre `Como medir tu Github.pbip` con una versión reciente de Power BI Desktop. (Si no abre el formato de proyecto, actívalo en *Archivo > Opciones > Características en vista previa*.)
