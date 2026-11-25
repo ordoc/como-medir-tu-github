@@ -31,7 +31,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Estás viendo datos sintéticos: los proyectos, las fechas y las cifras son inventados. Para medir tu propia actividad de GitHub, genera tus archivos con el extractor y apunta este informe a ellos. Son cinco pasos y no hay que guardar ningún token.",
+                    "value": "Para medir tu propia actividad de GitHub, genera tus archivos con el extractor y apunta este informe a ellos. Son cinco pasos y no hay que guardar ningún token. El repositorio incluye datos de ejemplo (sintéticos) para explorar el informe sin exponer la actividad de nadie.",
                     "textStyle": {
                       "fontSize": "11pt"
                     }

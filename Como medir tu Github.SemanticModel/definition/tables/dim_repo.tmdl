@@ -116,13 +116,22 @@ table dim_repo
 
 		annotation SummarizationSetBy = Automatic
 
+	column origen
+		dataType: string
+		lineageTag: f1f08b32-2834-4e43-bcaf-93cab4aa905d
+		summarizeBy: none
+		sourceColumn: origen
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_repo = m
 		mode: import
 		source =
 				let
-				  Origen = Csv.Document(File.Contents(Text.TrimEnd(Text.Trim(RutaDatos), "\") & "\dim_repo.csv"), [Delimiter = ",", Columns = 13, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  Origen = Csv.Document(File.Contents(Text.TrimEnd(Text.Trim(RutaDatos), "\") & "\dim_repo.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.None]),
 				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
-				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"repo_key", type text}, {"nombre_visible", type text}, {"tipo_repo", type text}, {"visibilidad", type text}, {"lenguaje_principal", type text}, {"commits", Int64.Type}, {"dias_activos", Int64.Type}, {"primer_commit", type date}, {"ultimo_commit", type date}, {"archivos", Int64.Type}, {"archivos_prueba", Int64.Type}, {"workflows_ci", Int64.Type}, {"color", type text}}, "es")
+				  ConOrigen = if List.Contains(Table.ColumnNames(#"Encabezados promovidos"), "origen") then #"Encabezados promovidos" else Table.AddColumn(#"Encabezados promovidos", "origen", each "real", type text),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(ConOrigen, {{"repo_key", type text}, {"nombre_visible", type text}, {"tipo_repo", type text}, {"visibilidad", type text}, {"lenguaje_principal", type text}, {"commits", Int64.Type}, {"dias_activos", Int64.Type}, {"primer_commit", type date}, {"ultimo_commit", type date}, {"archivos", Int64.Type}, {"archivos_prueba", Int64.Type}, {"workflows_ci", Int64.Type}, {"color", type text}, {"origen", type text}}, "es")
 				in
 				  #"Tipo de columna cambiado"
 

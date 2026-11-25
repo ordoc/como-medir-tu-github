@@ -486,7 +486,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Commits por trimestre (colores = proyectos, como en el ranking)'"
+                  "Value": "'Commits por trimestre y proyecto'"
                 }
               }
             },

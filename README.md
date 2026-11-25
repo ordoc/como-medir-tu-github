@@ -63,6 +63,11 @@ Después apunta `RutaDatos` a la carpeta `Datos_reales`, pulsa *Aplicar cambios*
 
 **Calidad de la extracción.** Cada ejecución escribe `calidad_extraccion.csv` y resume en pantalla las verificaciones (por ejemplo, commits obtenidos frente al total que reporta GitHub). Si algo dice `REVISAR`, no confíes en las cifras hasta entenderlo.
 
+## Límites conocidos del informe
+- **Número de proyectos.** Las páginas están dimensionadas para unos 8 o 9 proyectos. Con más, las tablas y los rankings tienen barra de desplazamiento (en Power BI se navega bien, pero al exportar a PDF se cortan). Filtra por proyecto o año, o usa `--excluir`.
+- **Colores.** El gráfico de commits por trimestre usa los colores del tema de Power BI, que pueden no coincidir con los del ranking (el ranking sí usa la columna `color`).
+- **Encabezado.** Dice «Datos sintéticos · versión pública» cuando todos los proyectos de `dim_repo.csv` tienen `origen = sintetico`, y «Datos reales · tu cuenta de GitHub» en cualquier otro caso.
+
 ## Privacidad
 Los archivos de salida contienen solo conteos, fechas, horas y clasificaciones: sin mensajes de commits, nombres de archivos, correos ni nombres de personas. Aun así, **revisa tus CSV antes de publicarlos**. La carpeta `Datos_reales/` y la caché están en el `.gitignore`.
 

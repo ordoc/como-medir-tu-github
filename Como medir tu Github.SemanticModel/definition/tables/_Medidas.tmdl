@@ -240,6 +240,11 @@ table _Medidas
 		displayFolder: 5 Visual
 		lineageTag: b2f6a8d4-0c93-4e71-8a5d-7d1e3f9c6b20
 
+	measure 'Subtitulo informe' = VAR n = CALCULATE(COUNTROWS(dim_repo), REMOVEFILTERS(dim_repo)) VAR s = CALCULATE(COUNTROWS(dim_repo), REMOVEFILTERS(dim_repo), dim_repo[origen] = "sintetico") RETURN IF(n > 0 && s = n, "Datos sintéticos · versión pública", "Datos reales · tu cuenta de GitHub")
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: ba0aead5-9dbc-455b-9591-c2e631801f1e
+
 	column Columna
 		dataType: string
 		isHidden

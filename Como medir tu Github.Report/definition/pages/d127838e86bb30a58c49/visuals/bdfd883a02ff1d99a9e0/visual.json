@@ -27,17 +27,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Datos sintéticos · versión pública",
-                    "textStyle": {
-                      "fontSize": "9pt",
-                      "color": "#DCE6F2"
-                    }
-                  }
-                ]
               }
             ]
           }

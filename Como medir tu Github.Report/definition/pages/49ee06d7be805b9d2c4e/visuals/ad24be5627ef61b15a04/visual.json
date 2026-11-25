@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "ad24be5627ef61b15a04",
   "position": {
     "x": 238,
@@ -28,8 +28,8 @@
               },
               "queryRef": "dim_repo.nombre_visible",
               "nativeQueryRef": "nombre_visible",
-              "active": true,
-              "displayName": "Proyecto"
+              "displayName": "Proyecto",
+              "active": true
             }
           ]
         }
@@ -52,6 +52,13 @@
       "header": [
         {
           "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
             "bold": {
               "expr": {
                 "Literal": {

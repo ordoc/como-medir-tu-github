@@ -428,6 +428,7 @@ def main():
             "primer_commit": filas[0]["fecha"], "ultimo_commit": filas[-1]["fecha"],
             "archivos": len(rutas), "archivos_prueba": sum(1 for p in rutas if RX_PRUEBA.search(p)),
             "workflows_ci": sum(1 for p in rutas if p.startswith(".github/workflows/")),
+            "origen": "real",
         })
 
     if not commits_rows:   # evita pisar con archivos vacios los datos de una ejecucion anterior
@@ -466,7 +467,7 @@ def main():
              "lineas_eliminadas", "archivos_prueba_tocados"])
     asignar_colores(repo_rows)
     escribir("dim_repo.csv", repo_rows, ["repo_key", "nombre_visible", "tipo_repo", "visibilidad", "lenguaje_principal", "commits",
-             "dias_activos", "primer_commit", "ultimo_commit", "archivos", "archivos_prueba", "workflows_ci", "color"])
+             "dias_activos", "primer_commit", "ultimo_commit", "archivos", "archivos_prueba", "workflows_ci", "color", "origen"])
     escribir("lenguajes_repo.csv", leng_rows, ["repo_key", "lenguaje", "bytes", "porcentaje"])
     escribir("contribuciones_dia.csv", contrib, ["fecha", "contribuciones"])
     informe_calidad(out, objetivos, commits_rows, repo_rows, contrib, totales, sin_det, hoy, omitidos, sin_commits, vacios)

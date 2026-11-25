@@ -137,6 +137,7 @@ def main():
             "archivos": archivos,
             "archivos_prueba": int(archivos * rng.uniform(0.08, 0.2)) if p["pruebas"] > 0 else 0,
             "workflows_ci": p["ci"],
+            "origen": "sintetico",
         })
         bytes_ = {p["leng"]: rng.randint(60_000, 400_000)}
         for otro in p["otros"]:
@@ -170,7 +171,7 @@ def main():
              "referencia_issue", "es_merge", "ia_coautor", "ia_herramienta", "archivos_cambiados", "lineas_anadidas",
              "lineas_eliminadas", "archivos_prueba_tocados"])
     escribir("dim_repo.csv", repos, ["repo_key", "nombre_visible", "tipo_repo", "visibilidad", "lenguaje_principal", "commits",
-             "dias_activos", "primer_commit", "ultimo_commit", "archivos", "archivos_prueba", "workflows_ci", "color"])
+             "dias_activos", "primer_commit", "ultimo_commit", "archivos", "archivos_prueba", "workflows_ci", "color", "origen"])
     escribir("lenguajes_repo.csv", lenguajes, ["repo_key", "lenguaje", "bytes", "porcentaje"])
     escribir("contribuciones_dia.csv", contrib, ["fecha", "contribuciones"])
     print("Listo (datos sintéticos):", out)
