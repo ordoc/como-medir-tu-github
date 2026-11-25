@@ -39,7 +39,7 @@ table lenguajes_repo
 		mode: import
 		source =
 				let
-				  Origen = Csv.Document(File.Contents(RutaDatos & "\lenguajes_repo.csv"), [Delimiter = ",", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  Origen = Csv.Document(File.Contents(Text.TrimEnd(Text.Trim(RutaDatos), "\") & "\lenguajes_repo.csv"), [Delimiter = ",", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
 				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
 				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"repo_key", type text}, {"lenguaje", type text}, {"bytes", Int64.Type}, {"porcentaje", Int64.Type}}, "es")
 				in

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
   "name": "40343cfa7e479e3bad2b",
   "position": {
     "x": 16,
@@ -28,8 +28,8 @@
               },
               "queryRef": "dim_repo.tipo_repo",
               "nativeQueryRef": "tipo_repo",
-              "displayName": "Tipo de repositorio",
-              "active": true
+              "active": true,
+              "displayName": "Tipo de repositorio"
             }
           ]
         }
@@ -52,13 +52,6 @@
       "header": [
         {
           "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
             "bold": {
               "expr": {
                 "Literal": {

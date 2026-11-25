@@ -129,7 +129,7 @@ table fact_commits
 		mode: import
 		source =
 				let
-				  Origen = Csv.Document(File.Contents(RutaDatos & "\fact_commits.csv"), [Delimiter = ",", Columns = 14, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  Origen = Csv.Document(File.Contents(Text.TrimEnd(Text.Trim(RutaDatos), "\") & "\fact_commits.csv"), [Delimiter = ",", Columns = 14, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
 				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
 				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"commit_id", type text}, {"repo_key", type text}, {"fecha", type date}, {"hora_local", Int64.Type}, {"fecha_hora_local", type datetime}, {"tipo_cambio", type text}, {"referencia_issue", Int64.Type}, {"es_merge", Int64.Type}, {"ia_coautor", Int64.Type}, {"ia_herramienta", type text}, {"archivos_cambiados", Int64.Type}, {"lineas_anadidas", Int64.Type}, {"lineas_eliminadas", Int64.Type}, {"archivos_prueba_tocados", Int64.Type}}, "es")
 				in

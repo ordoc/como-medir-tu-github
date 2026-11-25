@@ -26,8 +26,10 @@ El informe tiene cinco páginas:
 
 ## Probar el informe con los datos de ejemplo
 1. Abre `Como medir tu Github.pbip` con una versión reciente de Power BI Desktop. (Si no abre el formato de proyecto, actívalo en *Archivo > Opciones > Características en vista previa*.)
-2. En *Inicio > Transformar datos > Administrar parámetros*, cambia `RutaDatos` por la ruta de la carpeta `Datos` de este repositorio.
-3. Pulsa *Actualizar*.
+2. En *Inicio > Transformar datos > Administrar parámetros*, cambia `RutaDatos` por la ruta de la carpeta `Datos` de este repositorio (por ejemplo `C:\dev\como-medir-tu-github\Datos`) y pulsa *Aceptar*.
+3. Pulsa *Aplicar cambios* en la barra de aviso (o *Cerrar y aplicar*) y después *Actualizar*.
+
+Al abrir el proyecto por primera vez, los visuales aparecen vacíos hasta que apuntas `RutaDatos` a tus datos: es lo esperado.
 
 ## Usarlo con tus propios datos
 Necesitas [GitHub CLI](https://cli.github.com) y Python 3.9 o superior. No hay tokens en ningún archivo: el script usa tu sesión de `gh`.
@@ -46,7 +48,7 @@ Opciones útiles:
 | `--desde 2022` | Año inicial del calendario de contribuciones. |
 | `--completo` | Ignorar la caché y recalcular todo. |
 
-Después apunta `RutaDatos` a `Datos_reales` y pulsa *Actualizar*.
+Después apunta `RutaDatos` a la carpeta `Datos_reales`, pulsa *Aplicar cambios* y luego *Actualizar*.
 
 **Carga incremental.** El detalle de cada commit (archivos y líneas) se guarda en `.cache_detalle.json`; las siguientes ejecuciones solo consultan los commits nuevos. Si GitHub responde con límite de llamadas (5.000 por hora), el avance se conserva: vuelve a ejecutar el mismo comando más tarde.
 

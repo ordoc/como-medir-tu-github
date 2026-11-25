@@ -30,7 +30,7 @@ table contribuciones_dia
 		mode: import
 		source =
 				let
-				  Origen = Csv.Document(File.Contents(RutaDatos & "\contribuciones_dia.csv"), [Delimiter = ",", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  Origen = Csv.Document(File.Contents(Text.TrimEnd(Text.Trim(RutaDatos), "\") & "\contribuciones_dia.csv"), [Delimiter = ",", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
 				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
 				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"fecha", type date}, {"contribuciones", Int64.Type}}, "es")
 				in

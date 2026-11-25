@@ -120,7 +120,7 @@ table dim_repo
 		mode: import
 		source =
 				let
-				  Origen = Csv.Document(File.Contents(RutaDatos & "\dim_repo.csv"), [Delimiter = ",", Columns = 13, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  Origen = Csv.Document(File.Contents(Text.TrimEnd(Text.Trim(RutaDatos), "\") & "\dim_repo.csv"), [Delimiter = ",", Columns = 13, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
 				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
 				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"repo_key", type text}, {"nombre_visible", type text}, {"tipo_repo", type text}, {"visibilidad", type text}, {"lenguaje_principal", type text}, {"commits", Int64.Type}, {"dias_activos", Int64.Type}, {"primer_commit", type date}, {"ultimo_commit", type date}, {"archivos", Int64.Type}, {"archivos_prueba", Int64.Type}, {"workflows_ci", Int64.Type}, {"color", type text}}, "es")
 				in
