@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
   "name": "6bfe3684ce55641b3dc3",
   "position": {
     "x": 520,
@@ -28,8 +28,8 @@
               },
               "queryRef": "Calendario.Anio",
               "nativeQueryRef": "Anio",
-              "displayName": "Año",
-              "active": true
+              "active": true,
+              "displayName": "Año"
             }
           ]
         }
@@ -52,13 +52,6 @@
       "header": [
         {
           "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
             "bold": {
               "expr": {
                 "Literal": {
