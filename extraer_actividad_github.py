@@ -341,8 +341,14 @@ def main():
         print(f"-> {visible} ..." + (f" ({len(slugs)} repositorios)" if len(slugs) > 1 else ""), flush=True)
         parciales = [total_commits_api(s, autor) for s in slugs]
         lista, vistos, duplicados = [], set(), 0
-        for s in slugs:
-            for c in listar_commits(s, autor):
+        for n, s in enumerate(slugs, 1):
+            cs = listar_commits(s, autor)
+            if not cs and autor:     # repositorio de terceros sin resultados: decir por que (sin escribir su nombre real)
+                existe = api(f"repos/{s}") is not None
+                print(f"   AVISO: repositorio {n} de {len(slugs)} de «{key}»: "
+                      + ("existe, pero no tiene commits tuyos" if existe
+                         else "no existe o no tienes acceso (revisa que propietario/nombre estén bien escritos)"))
+            for c in cs:
                 if c["sha"] in vistos:      # el mismo commit en dos repositorios (historia compartida): se cuenta una vez
                     duplicados += 1
                     continue
