@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "% Fuera de Horario Laboral"
                 }
               },
-              "queryRef": "fact_commits.% Fuera de Horario Laboral",
+              "queryRef": "_Medidas.% Fuera de Horario Laboral",
               "nativeQueryRef": "% Fuera de Horario Laboral"
             }
           ]

@@ -50,6 +50,7 @@ Una fila por verificación: `verificacion`, `repo_key`, `esperado`, `obtenido`, 
 - `dim_repo[repo_key]` (1) → (*) `fact_commits[repo_key]` y `lenguajes_repo[repo_key]`.
 - `Calendario` (consulta de Power Query) → `fact_commits[fecha]` y `contribuciones_dia[fecha]`.
 - `Dim_Hora` (horas 0 a 23) → `fact_commits[hora_local]`, para que el mapa de calor mantenga las 24 columnas.
+- `_Medidas`: tabla sin datos que reúne las 48 medidas DAX, organizadas en carpetas (Volumen, Ritmo, Calidad, IA, Visual y Títulos). Está en `Como medir tu Github.SemanticModel/definition/tables/_Medidas.tmdl`.
 - El parámetro `RutaDatos` apunta a la carpeta con los CSV.
 
 ## Límites que conviene tener presentes

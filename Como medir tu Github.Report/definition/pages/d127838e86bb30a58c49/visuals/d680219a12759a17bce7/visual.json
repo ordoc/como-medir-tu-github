@@ -40,13 +40,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "% Coautoria de IA"
                 }
               },
-              "queryRef": "fact_commits.% Coautoria de IA",
+              "queryRef": "_Medidas.% Coautoria de IA",
               "nativeQueryRef": "% Coautoria de IA"
             }
           ]
@@ -59,7 +59,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fact_commits"
+                    "Entity": "_Medidas"
                   }
                 },
                 "Property": "% Coautoria de IA"
@@ -186,7 +186,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Titulo IA Proyecto"

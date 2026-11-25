@@ -1,0 +1,261 @@
+table _Medidas
+	lineageTag: 49df410e-43e4-4ff0-920e-be53fe799091
+
+	measure Commits = COUNTROWS(fact_commits)
+		formatString: #,0
+		displayFolder: 1 Volumen
+		lineageTag: fa615ad2-3db6-4c70-934d-111034531948
+
+	measure Proyectos = DISTINCTCOUNT(fact_commits[repo_key])
+		formatString: #,0
+		displayFolder: 1 Volumen
+		lineageTag: 5a255f41-8d92-42f3-b125-c00cf0dcbb90
+
+	measure 'Dias Activos' = DISTINCTCOUNT(fact_commits[fecha])
+		formatString: #,0
+		displayFolder: 1 Volumen
+		lineageTag: b9304dd7-d23f-4348-b494-96b7dbc66d21
+
+	measure 'Primer Commit' = MIN(fact_commits[fecha])
+		formatString: dd/MM/yyyy
+		displayFolder: 1 Volumen
+		lineageTag: 69d392f1-eedd-4e9f-a09e-a965b6bdeeb5
+
+	measure 'Ultimo Commit' = MAX(fact_commits[fecha])
+		formatString: dd/MM/yyyy
+		displayFolder: 1 Volumen
+		lineageTag: c9e8d1e6-4351-4e9c-aef3-da4594315775
+
+	measure 'Commits por Dia Activo' = DIVIDE([Commits], [Dias Activos])
+		formatString: 0.0
+		displayFolder: 2 Ritmo
+		lineageTag: fcd67c7c-86ae-4c1b-8281-cb129c00bfe3
+
+	measure 'Duracion en Dias' = IF([Commits] = 0, BLANK(), DATEDIFF(MIN(fact_commits[fecha]), MAX(fact_commits[fecha]), DAY) + 1)
+		formatString: #,0
+		displayFolder: 2 Ritmo
+		lineageTag: cf423018-ee10-477b-983d-d3c24c8de3dd
+
+	measure Constancia = DIVIDE([Dias Activos], [Duracion en Dias])
+		formatString: 0.0%
+		displayFolder: 2 Ritmo
+		lineageTag: 3dbde01c-e685-4989-98d2-531377f64898
+
+	measure 'Dia Pico (commits)' = MAXX(VALUES(fact_commits[fecha]), [Commits])
+		formatString: #,0
+		displayFolder: 2 Ritmo
+		lineageTag: 9690c184-60ba-4907-b410-d4ce1d1578ba
+
+	measure 'Fecha del Dia Pico' = VAR t = ADDCOLUMNS(VALUES(fact_commits[fecha]), "n", [Commits]) VAR m = MAXX(t, [n]) RETURN MAXX(FILTER(t, [n] = m), fact_commits[fecha])
+		formatString: dd/MM/yyyy
+		displayFolder: 2 Ritmo
+		lineageTag: 454a8a78-2d3a-434e-b61c-32bebba6a43f
+
+	measure '% en Fin de Semana' = DIVIDE(CALCULATE([Commits], Calendario[DiaSemanaNum] >= 6), [Commits])
+		formatString: 0.0%
+		displayFolder: 2 Ritmo
+		lineageTag: aaa2d4e1-3d31-4864-9c71-2b6091209660
+
+	measure '% Fuera de Horario Laboral' = DIVIDE(CALCULATE([Commits], fact_commits[hora_local] < 8 || fact_commits[hora_local] >= 18), [Commits])
+		formatString: 0.0%
+		displayFolder: 2 Ritmo
+		lineageTag: a4c94479-0850-4ea6-a33b-7ca145fe363a
+
+	measure Correcciones = CALCULATE([Commits], fact_commits[tipo_cambio] = "Corrección") + 0
+		formatString: #,0
+		displayFolder: 3 Calidad
+		lineageTag: 18a918b6-8467-42d1-b2ee-6d169c4ee1a3
+
+	measure Funcionalidades = CALCULATE([Commits], fact_commits[tipo_cambio] = "Funcionalidad")
+		formatString: #,0
+		displayFolder: 3 Calidad
+		lineageTag: 584af67c-5e8b-4c3e-be5d-8eea60da1135
+
+	measure '% Correcciones' = DIVIDE([Correcciones], [Commits])
+		formatString: 0.0%
+		displayFolder: 3 Calidad
+		lineageTag: 770661d2-a884-4513-a25c-e424efd8ee50
+
+	measure 'Correcciones por Funcionalidad' = IF([Commits] >= [Muestra Minima], DIVIDE([Correcciones], [Funcionalidades]))
+		formatString: 0.00
+		displayFolder: 3 Calidad
+		lineageTag: 79069137-c913-4025-9a01-8c5fb4f86d61
+
+	measure '% Sin Clasificar' = DIVIDE(CALCULATE([Commits], fact_commits[tipo_cambio] = "Otro"), [Commits])
+		formatString: 0.0%
+		displayFolder: 3 Calidad
+		lineageTag: ca1e96ba-06f1-4dbb-aa53-cfe49e749440
+
+	measure 'Commits con Pruebas' = CALCULATE([Commits], fact_commits[archivos_prueba_tocados] > 0) + 0
+		formatString: #,0
+		displayFolder: 3 Calidad
+		lineageTag: 18f6ce36-6dc1-425b-ba52-dd112283dba2
+
+	measure '% Commits con Pruebas' = IF([Commits] >= [Muestra Minima], DIVIDE([Commits con Pruebas], [Commits]))
+		formatString: 0.0%
+		displayFolder: 3 Calidad
+		lineageTag: 22bdf26f-c5c2-4edd-9dce-e042800dad50
+
+	measure 'Mediana de Lineas por Commit' = IF([Commits] >= [Muestra Minima], MEDIANX(fact_commits, fact_commits[lineas_anadidas] + fact_commits[lineas_eliminadas]))
+		formatString: #,0
+		displayFolder: 3 Calidad
+		lineageTag: 414ff8ab-eed7-4011-bb86-903fafc1b541
+
+	measure 'Mediana de Archivos por Commit' = MEDIAN(fact_commits[archivos_cambiados])
+		formatString: #,0
+		displayFolder: 3 Calidad
+		lineageTag: 72663009-b747-4d85-9a01-dcd3de2c014e
+
+	measure 'Commits con IA' = CALCULATE([Commits], fact_commits[ia_coautor] = 1) + 0
+		formatString: #,0
+		displayFolder: 4 IA
+		lineageTag: 83c11584-348e-4804-94e9-5cc836798b79
+
+	measure '% Coautoria de IA' = DIVIDE([Commits con IA], [Commits])
+		formatString: 0.0%
+		displayFolder: 4 IA
+		lineageTag: 6c7af782-5b6b-4934-8031-0b10ccb797de
+
+	measure 'Barra Commits' = VAR mx = MAXX(ALL(dim_repo[nombre_visible]), [Commits]) VAR n = MAX(1, ROUND(DIVIDE([Commits], mx) * 12, 0)) RETURN IF(ISBLANK([Commits]), BLANK(), REPT("■", n) & "  " & FORMAT([Commits], "#,0", "es-MX"))
+		displayFolder: 5 Visual
+		lineageTag: 9ac16e25-3545-4f69-be95-e23a06c829fd
+
+	measure 'Barra Constancia' = VAR c = [Constancia] VAR n = ROUND(c * 10, 0) RETURN IF(ISBLANK(c), BLANK(), REPT("■", n) & REPT("□", 10 - n) & "  " & FORMAT(c, "0%", "es-MX"))
+		displayFolder: 5 Visual
+		lineageTag: 304b2b50-7bc1-4164-92ee-e7a921e31a29
+
+	measure 'Color Proyecto' = SELECTEDVALUE(dim_repo[color], "#7F8C9A")
+		isHidden
+		displayFolder: 5 Visual
+		lineageTag: 96feeee8-e65b-4f20-a8a9-cadfaa7278ff
+
+	measure 'Texto Anios' = VAR f = MIN(fact_commits[fecha]) VAR l = MAX(fact_commits[fecha]) RETURN IF(ISBLANK(f), "sin datos", IF(YEAR(f) = YEAR(l), FORMAT(YEAR(f), "0"), YEAR(f) & " a " & YEAR(l)))
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 8a9be2d2-9dc8-4cf7-aab3-082e55d53003
+
+	measure 'Texto Proyectos' = VAR n = DISTINCTCOUNT(fact_commits[repo_key]) VAR total = CALCULATE(DISTINCTCOUNT(fact_commits[repo_key]), REMOVEFILTERS(Calendario), REMOVEFILTERS(dim_repo)) RETURN IF(n = 0, "sin datos", IF(n = total, n & " proyectos", IF(n = 1, SELECTEDVALUE(dim_repo[nombre_visible], "1 proyecto"), n & " de " & total & " proyectos")))
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 4a3ec3f6-3d0c-4217-bf79-ce64f5e6eaa2
+
+	measure 'Titulo Calor' = "¿Cuándo trabajas? Commits por día de la semana y hora (hora local)"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 2963a401-eb4c-40a9-957e-bfc072164532
+
+	measure 'Titulo Semana' = "Commits por día de la semana"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 6482770a-4a6f-47d0-bcf9-1553c8724c4c
+
+	measure 'Titulo Rafagas' = "Ráfagas frente a constancia: commits por mes"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 291bbfe6-5a24-4e0f-97bc-cea20b276d83
+
+	measure 'Color Tipo' = SWITCH(SELECTEDVALUE(fact_commits[tipo_cambio]), "Funcionalidad", "#2E75B6", "Corrección", "#E0A100", "Pruebas", "#17A2A2", "Documentación", "#8E5EA2", "Mantenimiento", "#7F8C9A", "Otro", "#C9D3E3", "#7F8C9A")
+		isHidden
+		displayFolder: 5 Visual
+		lineageTag: c7e4d694-8abc-4365-847e-8148d39c889f
+
+	measure 'Titulo Mezcla' = "¿Qué tipo de trabajo haces? Mezcla de commits por tipo de cambio"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 01bbaf80-1cac-46e0-b06b-86f702cb4949
+
+	measure 'Titulo Pruebas' = "¿Cuánto del trabajo toca pruebas?"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 29359cad-d337-4ef6-ac96-37831ed75efc
+
+	measure 'Titulo Tamano' = "¿Qué tan grandes son tus cambios?"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 2d7b72cb-f03e-4e72-b71c-cbd0d3e948eb
+
+	measure 'Titulo Correcciones' = "¿Cuánto se corrige por cada funcionalidad?"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: f2ec6f0e-3681-436c-acaa-d740928d622f
+
+	measure 'Titulo IA Proyecto' = "¿En qué proyectos declaras ayuda de IA? % de commits con coautoría de IA"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 5b0d6f1e-7a42-4c1d-9e0a-3f1a8c2d4b71
+
+	measure 'Titulo IA Mes' = "¿Desde cuándo? % de commits con coautoría de IA por mes"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 8c3e1a92-5d17-4e6b-a4f0-72b9d1e5c308
+
+	measure 'Titulo Tabla Calidad' = "Calidad por proyecto"
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 3e9a7c14-6b25-4d80-8f1c-a4d52b7e9013
+
+	measure 'Texto Contexto' = FORMAT([Commits], "#,0", "es-MX") & " commits · " & [Texto Anios] & " · " & [Texto Proyectos]
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 29301f14-734c-4c12-9780-ec34bcfc6b87
+
+	measure 'Commits sin IA' = [Commits] - [Commits con IA]
+		formatString: #,0
+		displayFolder: 4 IA
+		lineageTag: dc8778c9-ecf8-4af9-bdac-4bbfc156f337
+
+	measure 'Color Dia' = IF(SELECTEDVALUE(Calendario[DiaSemanaNum]) >= 6, "#E0A100", "#2B4A82")
+		isHidden
+		displayFolder: 5 Visual
+		lineageTag: fe410530-16b8-46f0-a52e-d688c2999223
+
+	measure 'Muestra Minima' = 10
+		isHidden
+		displayFolder: 3 Calidad
+		lineageTag: 2d6c1217-adec-4018-8f62-9de3d33f9e58
+
+	measure 'Mensaje Resumen' = FORMAT([Commits], "#,0", "es-MX") & " commits · " & [Texto Anios] & " · " & [Texto Proyectos]
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 66a8b7cc-bd1d-4599-a9b1-e652764d064f
+
+	measure 'Mensaje Ritmo' = VAR dia = MAXX(TOPN(1, VALUES(Calendario[DiaSemana]), [Commits], DESC), Calendario[DiaSemana]) RETURN IF([Commits] = 0, "Sin datos", "Día más activo: " & LOWER(dia) & " · " & FORMAT([% Fuera de Horario Laboral], "0.0%", "es-MX") & " fuera de horario")
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 8ccbc45c-07f5-4554-ac09-32391035da79
+
+	measure 'Mensaje Calidad' = IF(ISBLANK([% Commits con Pruebas]), "Poca muestra: menos de " & [Muestra Minima] & " commits", FORMAT([% Commits con Pruebas], "0.0%", "es-MX") & " con pruebas · " & FORMAT([Correcciones por Funcionalidad], "0.00", "es-MX") & " correcciones/funcionalidad")
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 4df21b82-8de2-4afa-af59-c957c597ac4b
+
+	measure 'Mensaje IA' = IF([Commits] = 0, "Sin datos", FORMAT([Commits con IA], "#,0", "es-MX") & " de " & FORMAT([Commits], "#,0", "es-MX") & " commits declaran coautoría de IA (" & FORMAT([% Coautoria de IA], "0.0%", "es-MX") & ")")
+		isHidden
+		displayFolder: 6 Titulos
+		lineageTag: 8d2cf4ab-d946-4e11-87f1-0713d1601791
+
+	measure 'Commits Calor' = [Commits] + 0
+		formatString: #,0;-#,0;
+		isHidden
+		displayFolder: 5 Visual
+		lineageTag: b2f6a8d4-0c93-4e71-8a5d-7d1e3f9c6b20
+
+	column Columna
+		dataType: string
+		isHidden
+		lineageTag: 488b30c6-8766-4015-b003-eb3cb7b4e9dc
+		summarizeBy: none
+		sourceColumn: Columna
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Medidas = m
+		mode: import
+		source =
+				let
+					Origen = #table(type table [Columna = text], {})
+				in
+					Origen
+
+	annotation PBI_ResultType = Table
+

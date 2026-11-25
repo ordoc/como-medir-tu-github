@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Mensaje Ritmo"
                 }
               },
-              "queryRef": "fact_commits.Mensaje Ritmo",
+              "queryRef": "_Medidas.Mensaje Ritmo",
               "nativeQueryRef": "Mensaje Ritmo",
               "displayName": "Mensaje"
             }

@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Mensaje Calidad"
                 }
               },
-              "queryRef": "fact_commits.Mensaje Calidad",
+              "queryRef": "_Medidas.Mensaje Calidad",
               "nativeQueryRef": "Mensaje Calidad",
               "displayName": "Mensaje"
             }

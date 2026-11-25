@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Commits sin IA"
                 }
               },
-              "queryRef": "fact_commits.Commits sin IA",
+              "queryRef": "_Medidas.Commits sin IA",
               "nativeQueryRef": "Commits sin IA"
             }
           ]

@@ -26,10 +26,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.primer_commit": {
+			    "_medidas.primer_commit": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Primer Commit"
 			        }
 			      },
@@ -47,10 +47,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.ultimo_commit": {
+			    "_medidas.ultimo_commit": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Ultimo Commit"
 			        }
 			      },
@@ -68,10 +68,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.duracion_en_dias": {
+			    "_medidas.duracion_en_dias": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Duracion en Dias"
 			        }
 			      },
@@ -89,10 +89,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.dias_activos": {
+			    "_medidas.dias_activos": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Dias Activos"
 			        }
 			      },
@@ -110,10 +110,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.constancia": {
+			    "_medidas.constancia": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Constancia"
 			        }
 			      },
@@ -191,10 +191,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.barra_constancia": {
+			    "_medidas.barra_constancia": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Barra Constancia"
 			        }
 			      },
@@ -212,10 +212,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.barra_commits": {
+			    "_medidas.barra_commits": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Barra Commits"
 			        }
 			      },
@@ -293,10 +293,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.commits_con_pruebas": {
+			    "_medidas.commits_con_pruebas": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "% Commits con Pruebas"
 			        }
 			      },
@@ -314,10 +314,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.mediana_de_lineas_por_commit": {
+			    "_medidas.mediana_de_lineas_por_commit": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Mediana de Lineas por Commit"
 			        }
 			      },
@@ -335,10 +335,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.correcciones_por_funcionalidad": {
+			    "_medidas.correcciones_por_funcionalidad": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Correcciones por Funcionalidad"
 			        }
 			      },
@@ -356,19 +356,19 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.texto_contexto": {
+			    "_medidas.texto_contexto": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Texto Contexto"
 			        }
 			      },
 			      "State": "Generated"
 			    },
-			    "fact_commits.mensaje_resumen": {
+			    "_medidas.mensaje_resumen": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Mensaje Resumen"
 			        }
 			      },
@@ -386,10 +386,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.mensaje_ritmo": {
+			    "_medidas.mensaje_ritmo": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Mensaje Ritmo"
 			        }
 			      },
@@ -407,10 +407,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.mensaje_calidad": {
+			    "_medidas.mensaje_calidad": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Mensaje Calidad"
 			        }
 			      },
@@ -428,10 +428,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.mensaje_ia": {
+			    "_medidas.mensaje_ia": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Mensaje IA"
 			        }
 			      },
@@ -470,10 +470,10 @@ cultureInfo es-CO
 			        }
 			      ]
 			    },
-			    "fact_commits.commits_calor": {
+			    "_medidas.commits_calor": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "fact_commits",
+			          "ConceptualEntity": "_Medidas",
 			          "ConceptualProperty": "Commits Calor"
 			        }
 			      },

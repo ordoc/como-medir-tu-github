@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Funcionalidades"
                 }
               },
-              "queryRef": "fact_commits.Funcionalidades",
+              "queryRef": "_Medidas.Funcionalidades",
               "nativeQueryRef": "Funcionalidades"
             }
           ]

@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["RutaDatos","contribuciones_dia","dim_repo","fact_commits","lenguajes_repo","Calendario","Dim_Hora"]
+annotation PBI_QueryOrder = ["RutaDatos","contribuciones_dia","dim_repo","fact_commits","lenguajes_repo","Calendario","Dim_Hora","_Medidas"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -19,6 +19,7 @@ ref table fact_commits
 ref table lenguajes_repo
 ref table Calendario
 ref table Dim_Hora
+ref table _Medidas
 
 ref cultureInfo es-CO
 

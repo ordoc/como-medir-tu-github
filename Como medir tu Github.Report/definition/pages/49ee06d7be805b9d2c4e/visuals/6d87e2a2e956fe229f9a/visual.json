@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Mediana de Lineas por Commit"
                 }
               },
-              "queryRef": "fact_commits.Mediana de Lineas por Commit",
+              "queryRef": "_Medidas.Mediana de Lineas por Commit",
               "nativeQueryRef": "Mediana de Lineas por Commit"
             }
           ]

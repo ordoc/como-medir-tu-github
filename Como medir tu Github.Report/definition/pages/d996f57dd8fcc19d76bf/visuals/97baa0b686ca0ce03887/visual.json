@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "% en Fin de Semana"
                 }
               },
-              "queryRef": "fact_commits.% en Fin de Semana",
+              "queryRef": "_Medidas.% en Fin de Semana",
               "nativeQueryRef": "% en Fin de Semana"
             }
           ]

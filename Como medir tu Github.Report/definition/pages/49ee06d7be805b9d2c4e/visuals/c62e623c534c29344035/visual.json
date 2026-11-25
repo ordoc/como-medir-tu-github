@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Correcciones por Funcionalidad"
                 }
               },
-              "queryRef": "fact_commits.Correcciones por Funcionalidad",
+              "queryRef": "_Medidas.Correcciones por Funcionalidad",
               "nativeQueryRef": "Correcciones por Funcionalidad"
             }
           ]

@@ -40,13 +40,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Commits"
                 }
               },
-              "queryRef": "fact_commits.Commits",
+              "queryRef": "_Medidas.Commits",
               "nativeQueryRef": "Commits"
             }
           ]
@@ -58,13 +58,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Dias Activos"
                 }
               },
-              "queryRef": "fact_commits.Dias Activos",
+              "queryRef": "_Medidas.Dias Activos",
               "nativeQueryRef": "Dias Activos",
               "displayName": "Días activos"
             }

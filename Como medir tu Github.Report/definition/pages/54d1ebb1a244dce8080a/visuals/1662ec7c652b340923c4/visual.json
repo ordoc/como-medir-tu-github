@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Dia Pico (commits)"
                 }
               },
-              "queryRef": "fact_commits.Dia Pico (commits)",
+              "queryRef": "_Medidas.Dia Pico (commits)",
               "nativeQueryRef": "Dia Pico (commits)"
             }
           ]

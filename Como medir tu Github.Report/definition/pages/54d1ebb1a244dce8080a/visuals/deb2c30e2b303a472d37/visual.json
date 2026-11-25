@@ -40,13 +40,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Commits"
                 }
               },
-              "queryRef": "fact_commits.Commits",
+              "queryRef": "_Medidas.Commits",
               "nativeQueryRef": "Commits"
             }
           ]
@@ -58,13 +58,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Dias Activos"
                 }
               },
-              "queryRef": "fact_commits.Dias Activos",
+              "queryRef": "_Medidas.Dias Activos",
               "nativeQueryRef": "Dias Activos",
               "displayName": "Días activos"
             },
@@ -73,13 +73,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Constancia"
                 }
               },
-              "queryRef": "fact_commits.Constancia",
+              "queryRef": "_Medidas.Constancia",
               "nativeQueryRef": "Constancia"
             }
           ]
@@ -92,7 +92,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fact_commits"
+                    "Entity": "_Medidas"
                   }
                 },
                 "Property": "Commits"
@@ -160,7 +160,7 @@
                     "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "fact_commits"
+                          "Entity": "_Medidas"
                         }
                       },
                       "Property": "Color Proyecto"

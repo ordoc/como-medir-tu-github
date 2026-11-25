@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Commits por Dia Activo"
                 }
               },
-              "queryRef": "fact_commits.Commits por Dia Activo",
+              "queryRef": "_Medidas.Commits por Dia Activo",
               "nativeQueryRef": "Commits por Dia Activo"
             }
           ]

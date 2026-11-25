@@ -35,13 +35,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Commits"
                 }
               },
-              "queryRef": "fact_commits.Commits",
+              "queryRef": "_Medidas.Commits",
               "nativeQueryRef": "Commits"
             },
             {
@@ -49,13 +49,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "% Commits con Pruebas"
                 }
               },
-              "queryRef": "fact_commits.% Commits con Pruebas",
+              "queryRef": "_Medidas.% Commits con Pruebas",
               "nativeQueryRef": "% Commits con Pruebas",
               "displayName": "% pruebas"
             },
@@ -64,13 +64,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Mediana de Lineas por Commit"
                 }
               },
-              "queryRef": "fact_commits.Mediana de Lineas por Commit",
+              "queryRef": "_Medidas.Mediana de Lineas por Commit",
               "nativeQueryRef": "Mediana de Lineas por Commit",
               "displayName": "Líneas (med.)"
             },
@@ -79,13 +79,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Correcciones por Funcionalidad"
                 }
               },
-              "queryRef": "fact_commits.Correcciones por Funcionalidad",
+              "queryRef": "_Medidas.Correcciones por Funcionalidad",
               "nativeQueryRef": "Correcciones por Funcionalidad",
               "displayName": "Ratio corr."
             }
@@ -99,7 +99,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fact_commits"
+                    "Entity": "_Medidas"
                   }
                 },
                 "Property": "Commits"
@@ -268,7 +268,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Titulo Tabla Calidad"

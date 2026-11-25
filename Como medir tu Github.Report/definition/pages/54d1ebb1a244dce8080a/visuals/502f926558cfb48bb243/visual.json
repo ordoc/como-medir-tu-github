@@ -35,13 +35,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Primer Commit"
                 }
               },
-              "queryRef": "fact_commits.Primer Commit",
+              "queryRef": "_Medidas.Primer Commit",
               "nativeQueryRef": "Primer Commit",
               "displayName": "Primer commit"
             },
@@ -50,13 +50,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Ultimo Commit"
                 }
               },
-              "queryRef": "fact_commits.Ultimo Commit",
+              "queryRef": "_Medidas.Ultimo Commit",
               "nativeQueryRef": "Ultimo Commit",
               "displayName": "Último commit"
             },
@@ -65,13 +65,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Duracion en Dias"
                 }
               },
-              "queryRef": "fact_commits.Duracion en Dias",
+              "queryRef": "_Medidas.Duracion en Dias",
               "nativeQueryRef": "Duracion en Dias",
               "displayName": "Duración (días)"
             },
@@ -80,13 +80,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Dias Activos"
                 }
               },
-              "queryRef": "fact_commits.Dias Activos",
+              "queryRef": "_Medidas.Dias Activos",
               "nativeQueryRef": "Dias Activos",
               "displayName": "Días activos"
             },
@@ -95,13 +95,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Barra Constancia"
                 }
               },
-              "queryRef": "fact_commits.Barra Constancia",
+              "queryRef": "_Medidas.Barra Constancia",
               "nativeQueryRef": "Barra Constancia",
               "displayName": "Constancia"
             },
@@ -110,13 +110,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Barra Commits"
                 }
               },
-              "queryRef": "fact_commits.Barra Commits",
+              "queryRef": "_Medidas.Barra Commits",
               "nativeQueryRef": "Barra Commits",
               "displayName": "Commits"
             }
@@ -130,7 +130,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fact_commits"
+                    "Entity": "_Medidas"
                   }
                 },
                 "Property": "Primer Commit"

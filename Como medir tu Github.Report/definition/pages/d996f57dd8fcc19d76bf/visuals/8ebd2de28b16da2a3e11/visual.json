@@ -60,13 +60,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Commits Calor"
                 }
               },
-              "queryRef": "fact_commits.Commits Calor",
+              "queryRef": "_Medidas.Commits Calor",
               "nativeQueryRef": "Commits Calor",
               "displayName": "Commits"
             }
@@ -98,7 +98,7 @@
                         "Measure": {
                           "Expression": {
                             "SourceRef": {
-                              "Entity": "fact_commits"
+                              "Entity": "_Medidas"
                             }
                           },
                           "Property": "Commits Calor"
@@ -143,7 +143,7 @@
                 }
               }
             ],
-            "metadata": "fact_commits.Commits Calor"
+            "metadata": "_Medidas.Commits Calor"
           }
         }
       ],
@@ -258,7 +258,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Titulo Calor"

@@ -20,13 +20,13 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_commits"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Dias Activos"
                 }
               },
-              "queryRef": "fact_commits.Dias Activos",
+              "queryRef": "_Medidas.Dias Activos",
               "nativeQueryRef": "Dias Activos"
             }
           ]
