@@ -52,7 +52,7 @@ Opciones útiles:
 | `--excluir repo-a repo-b` | Dejar fuera algunos repositorios de la búsqueda automática. |
 | `--con-forks`, `--con-archivados` | Incluir también los forks o los archivados, que por defecto se omiten. |
 | `--listar` | Mostrar qué repositorios se medirían y terminar, sin extraer nada. |
-| `--anonimo propietario/repo=alias` | Incluir un repositorio de terceros con un alias; su nombre real nunca se escribe en la salida. Se puede repetir. |
+| `--anonimo propietario/repo=alias` | Incluir un repositorio de terceros con un alias; su nombre real nunca se escribe en la salida. Repítela con el **mismo alias** para unir varios repositorios del mismo cliente en un solo proyecto (si comparten historia, cada commit se cuenta una sola vez). |
 | `--utc-offset -5` | Tu zona horaria (por defecto UTC-5). |
 | `--desde 2022` | Año inicial del calendario de contribuciones. |
 | `--completo` | Ignorar la caché y recalcular todo. |

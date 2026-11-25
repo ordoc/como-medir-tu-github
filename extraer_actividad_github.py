@@ -10,7 +10,8 @@ Sin --repos toma TODOS los repositorios propios del usuario (sin forks ni archiv
 algunos: --repos mi-repo-1 mi-repo-2. Para ver cuáles tomaría sin extraer nada: --listar.
 Opciones: --excluir repo-a repo-b, --con-forks, --con-archivados.
 
---anonimo (se puede repetir): repositorio de terceros que se incluye con un alias.
+--anonimo (se puede repetir): repositorio de terceros que se incluye con un alias. Si repites el MISMO alias
+con varios repositorios, se unen en un solo proyecto (y un commit presente en dos de ellos cuenta una vez).
 El nombre real solo se usa para consultar la API y nunca se escribe en los archivos de salida.
 
 Carga incremental: el detalle de cada commit (archivos y líneas) se guarda en `.cache_detalle.json`
@@ -315,12 +316,18 @@ def main():
             omitidos.append(nombre)
             continue
         privado = info.get("private", False)
-        objetivos.append((f"{a.usuario}/{nombre}", nombre, nombre,
+        objetivos.append(([f"{a.usuario}/{nombre}"], nombre, nombre,
                           "Aplicación propia (privada)" if privado else "Portafolio (público)",
                           "Privado" if privado else "Público", None))
+    grupos = {}                                       # varios repos con el mismo alias = un solo proyecto
     for par in a.anonimo:
+        if "=" not in par or "/" not in par.split("=", 1)[0]:
+            raise SystemExit("--anonimo debe tener la forma propietario/repositorio=alias, por ejemplo: "
+                             "--anonimo dueño-real/repo-real=cliente-1 (el nombre real solo se usa para consultar la API).")
         slug, alias = par.split("=", 1)
-        objetivos.append((slug, alias, "Proyecto de cliente (consultoría)", "Proyecto de cliente (anónimo)",
+        grupos.setdefault(alias, []).append(slug)
+    for alias, slugs in grupos.items():
+        objetivos.append((slugs, alias, "Proyecto de cliente (consultoría)", "Proyecto de cliente (anónimo)",
                           "Privado de terceros", a.usuario))
     if not objetivos:
         raise SystemExit("\nNo se pudo acceder a ningún repositorio, así que NO se escribió ningún archivo.\n"
@@ -330,10 +337,21 @@ def main():
 
     commits_rows, repo_rows, leng_rows = [], [], []
     totales, sin_det = {}, {}
-    for slug, key, visible, tipo, visib, autor in objetivos:
-        print(f"-> {visible} ...", flush=True)
-        totales[key] = total_commits_api(slug, autor)
-        lista = listar_commits(slug, autor)
+    for slugs, key, visible, tipo, visib, autor in objetivos:
+        print(f"-> {visible} ..." + (f" ({len(slugs)} repositorios)" if len(slugs) > 1 else ""), flush=True)
+        parciales = [total_commits_api(s, autor) for s in slugs]
+        lista, vistos, duplicados = [], set(), 0
+        for s in slugs:
+            for c in listar_commits(s, autor):
+                if c["sha"] in vistos:      # el mismo commit en dos repositorios (historia compartida): se cuenta una vez
+                    duplicados += 1
+                    continue
+                vistos.add(c["sha"])
+                c["_slug"] = s
+                lista.append(c)
+        totales[key] = None if any(p is None for p in parciales) else sum(parciales) - duplicados
+        if duplicados:
+            print(f"   {duplicados} commits repetidos entre los repositorios (historia compartida): se cuentan una sola vez")
         if not lista:
             if key in auto:       # encontrado automaticamente: un repositorio vacio es normal, no un error
                 print("   (sin commits, se omite)")
@@ -345,7 +363,7 @@ def main():
         previo = cache.get(key, {})
         pendientes = [c for c in lista if hash_sha(c["sha"]) not in previo]
         with ThreadPoolExecutor(max_workers=8) as ex:
-            nuevos = list(ex.map(lambda c: detalle(slug, c["sha"]), pendientes))
+            nuevos = list(ex.map(lambda c: detalle(c["_slug"], c["sha"]), pendientes))
         vigente = {hash_sha(c["sha"]): previo[hash_sha(c["sha"])] for c in lista if hash_sha(c["sha"]) in previo}
         limite, sin_detalle = False, 0
         for c, d in zip(pendientes, nuevos):
@@ -386,11 +404,14 @@ def main():
         commits_rows += filas
 
         # calidad del repositorio (solo conteos)
-        info = api(f"repos/{slug}")
-        rama = (info or {}).get("default_branch", "main")
-        arbol = (api(f"repos/{slug}/git/trees/{rama}?recursive=1") or {}).get("tree", [])
-        rutas = [x["path"] for x in arbol if x["type"] == "blob" and not x["path"].startswith(("node_modules/", ".git/"))]
-        langs = api(f"repos/{slug}/languages") or {}
+        rutas, langs = [], {}
+        for s in slugs:
+            info = api(f"repos/{s}")
+            rama = (info or {}).get("default_branch", "main")
+            arbol = (api(f"repos/{s}/git/trees/{rama}?recursive=1") or {}).get("tree", [])
+            rutas += [x["path"] for x in arbol if x["type"] == "blob" and not x["path"].startswith(("node_modules/", ".git/"))]
+            for lg, b in (api(f"repos/{s}/languages") or {}).items():
+                langs[lg] = langs.get(lg, 0) + b
         total = sum(langs.values()) or 1
         for lg, b in sorted(langs.items(), key=lambda x: -x[1]):
             leng_rows.append({"repo_key": key, "lenguaje": lg, "bytes": b, "porcentaje": round(100 * b / total, 2)})
