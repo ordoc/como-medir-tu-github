@@ -20,7 +20,7 @@ Codificación UTF-8 con BOM, separador coma, fechas `AAAA-MM-DD`. La hora local 
 | `primer_commit`, `ultimo_commit` | Fechas locales. |
 | `archivos`, `archivos_prueba`, `workflows_ci` | Archivos del repositorio, los que son pruebas (`.test.`, `.spec.`, `e2e/`, `tests/`…) y flujos de CI en `.github/workflows/`. |
 | `color` | Color del proyecto (`#RRGGBB`). Lo asigna el extractor por orden alfabético del nombre visible, con una paleta de 12 colores; el informe lo usa en todos los gráficos por proyecto. |
-| `origen` | `sintetico` o `real`. Lo escribe cada script (el generador de datos de ejemplo y el extractor); el informe lo usa para decir en el encabezado si los datos son de ejemplo o reales. Si falta (CSV de una versión anterior), se toma como `real`. |
+| `origen` | `sintetico` o `real`. Lo escribe cada script (el generador de datos de ejemplo y el extractor); el informe lo usa para decir, en la tarjeta de contexto junto a los filtros, si los datos son de ejemplo o reales. Si falta (CSV de una versión anterior), se toma como `real`. |
 
 ### `fact_commits.csv` · una fila por commit
 | Columna | Descripción |

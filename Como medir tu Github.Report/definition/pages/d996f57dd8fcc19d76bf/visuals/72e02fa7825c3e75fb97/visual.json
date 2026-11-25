@@ -27,6 +27,17 @@
                     }
                   }
                 ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Informe de código abierto (licencia MIT)",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#DCE6F2"
+                    }
+                  }
+                ]
               }
             ]
           }
