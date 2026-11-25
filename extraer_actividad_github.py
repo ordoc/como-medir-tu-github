@@ -4,9 +4,11 @@ Solo lee (usa `gh api`, que debe estar autenticado). No guarda mensajes de commi
 nombres de archivos ni nombres de personas: solo conteos, fechas, horas y clasificaciones.
 
 Uso:
-  python extraer_actividad_github.py --usuario mi-usuario \
-      --repos mi-repo-1 mi-repo-2 mi-repo-3 \
-      --anonimo propietario/repositorio=cliente-1
+  python extraer_actividad_github.py --usuario mi-usuario --salida Datos_reales
+
+Sin --repos toma TODOS los repositorios propios del usuario (sin forks ni archivados). Para elegir solo
+algunos: --repos mi-repo-1 mi-repo-2. Para ver cuáles tomaría sin extraer nada: --listar.
+Opciones: --excluir repo-a repo-b, --con-forks, --con-archivados.
 
 --anonimo (se puede repetir): repositorio de terceros que se incluye con un alias.
 El nombre real solo se usa para consultar la API y nunca se escribe en los archivos de salida.
@@ -159,6 +161,18 @@ def listar_commits(slug, autor=None):
     return salida
 
 
+def listar_repos(usuario, con_forks=False, con_archivados=False):
+    """Nombres de los repositorios del usuario. Con la cuenta del propio usuario incluye los privados;
+    con la de otra persona, solo los publicos."""
+    args = ["repo", "list", usuario, "--limit", "1000", "--json", "name"]
+    if not con_forks:
+        args.append("--source")
+    if not con_archivados:
+        args.append("--no-archived")
+    d = gh(args) or []
+    return sorted((r["name"] for r in d), key=str.lower)
+
+
 def detalle(slug, sha):
     try:
         d = api(f"repos/{slug}/commits/{sha}")
@@ -210,7 +224,7 @@ def total_commits_api(slug, autor=None):
         return None
 
 
-def informe_calidad(out, objetivos, commits_rows, repo_rows, contrib, totales, sin_det, hoy):
+def informe_calidad(out, objetivos, commits_rows, repo_rows, contrib, totales, sin_det, hoy, omitidos=(), sin_commits=(), vacios=()):
     """Verificaciones sobre lo extraido; solo conteos. Se guarda en calidad_extraccion.csv y se resume en pantalla."""
     res = []
 
@@ -223,6 +237,12 @@ def informe_calidad(out, objetivos, commits_rows, repo_rows, contrib, totales, s
             r = "INFO"
         res.append({"verificacion": verificacion, "repo_key": repo, "esperado": esperado, "obtenido": obtenido, "resultado": r})
 
+    for nombre in omitidos:        # repos pedidos que no se pudieron leer: no es un fallo silencioso
+        add("repo_accesible", nombre, "accesible", "no accesible")
+    for clave in sin_commits:
+        add("repo_con_commits_visibles", clave, "con commits", "sin commits")
+    for clave in vacios:           # repos propios sin commits: informativo, no es un fallo
+        add("repo_vacio_omitido", clave, "", "sin commits", "INFO")
     ids = [f["commit_id"] for f in commits_rows]
     add("ids_unicos", "(todos)", len(ids), len(set(ids)))
     por_repo = Counter(f["repo_key"] for f in commits_rows)
@@ -254,7 +274,12 @@ def informe_calidad(out, objetivos, commits_rows, repo_rows, contrib, totales, s
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--usuario", required=True)
-    ap.add_argument("--repos", nargs="+", default=[])
+    ap.add_argument("--repos", nargs="+", default=[],
+                    help="repositorios a medir; si lo omites, se toman todos los propios del usuario")
+    ap.add_argument("--excluir", nargs="+", default=[], help="repositorios que no se medirán (con la búsqueda automática)")
+    ap.add_argument("--con-forks", action="store_true", help="incluye forks (por defecto se omiten)")
+    ap.add_argument("--con-archivados", action="store_true", help="incluye repositorios archivados (por defecto se omiten)")
+    ap.add_argument("--listar", action="store_true", help="solo muestra qué repositorios se medirían y termina")
     ap.add_argument("--anonimo", action="append", default=[], help="propietario/repositorio=alias")
     ap.add_argument("--desde", type=int, default=2022, help="año inicial para el calendario de contribuciones")
     ap.add_argument("--utc-offset", type=int, default=-5, help="zona horaria local (Colombia = -5)")
@@ -269,10 +294,25 @@ def main():
     cache = {} if a.completo else cargar_cache(ruta_cache)
 
     objetivos = []  # (slug_para_api, repo_key, nombre_visible, tipo, visibilidad, filtrar_autor)
+    omitidos, sin_commits, vacios = [], [], []   # para dejarlos en el informe de calidad
+    auto = set()
+    if not a.repos:                                   # sin --repos: todos los repositorios propios
+        encontrados = listar_repos(a.usuario, a.con_forks, a.con_archivados)
+        if not encontrados:
+            raise SystemExit(f"No se encontró ningún repositorio de {a.usuario}. Revisa el usuario y tu sesión de gh (gh auth status), "
+                             "o indica los repositorios con --repos.")
+        excl = {x.lower() for x in a.excluir}
+        a.repos = [r for r in encontrados if r.lower() not in excl]
+        auto = set(a.repos)
+    print(f"Repositorios que se medirán ({len(a.repos)}): " + ", ".join(a.repos))
+    if a.listar:
+        print("(--listar: no se extrajo nada)")
+        return
     for nombre in a.repos:
         info = api(f"repos/{a.usuario}/{nombre}")
         if not info:
             print("  (no accesible, se omite):", nombre)
+            omitidos.append(nombre)
             continue
         privado = info.get("private", False)
         objetivos.append((f"{a.usuario}/{nombre}", nombre, nombre,
@@ -282,6 +322,11 @@ def main():
         slug, alias = par.split("=", 1)
         objetivos.append((slug, alias, "Proyecto de cliente (consultoría)", "Proyecto de cliente (anónimo)",
                           "Privado de terceros", a.usuario))
+    if not objetivos:
+        raise SystemExit("\nNo se pudo acceder a ningún repositorio, así que NO se escribió ningún archivo.\n"
+                         "Revisa que reemplazaste los textos de ejemplo (TU-USUARIO, repo-1, repo-2…) por los tuyos, que el usuario "
+                         "es el dueño de esos repositorios y que tu sesión de gh tiene acceso (gh auth status).\n"
+                         "Para ver los nombres de tus repositorios: gh repo list TU-USUARIO --limit 100")
 
     commits_rows, repo_rows, leng_rows = [], [], []
     totales, sin_det = {}, {}
@@ -290,7 +335,12 @@ def main():
         totales[key] = total_commits_api(slug, autor)
         lista = listar_commits(slug, autor)
         if not lista:
-            print("   AVISO: sin commits visibles o sin acceso (revisa el nombre y tus permisos); se omite este repositorio.")
+            if key in auto:       # encontrado automaticamente: un repositorio vacio es normal, no un error
+                print("   (sin commits, se omite)")
+                vacios.append(key)
+            else:
+                print("   AVISO: sin commits visibles o sin acceso (revisa el nombre y tus permisos); se omite este repositorio.")
+                sin_commits.append(key)
             continue
         previo = cache.get(key, {})
         pendientes = [c for c in lista if hash_sha(c["sha"]) not in previo]
@@ -353,7 +403,15 @@ def main():
             "workflows_ci": sum(1 for p in rutas if p.startswith(".github/workflows/")),
         })
 
+    if not commits_rows:   # evita pisar con archivos vacios los datos de una ejecucion anterior
+        raise SystemExit("\nNo se obtuvo ningún commit, así que NO se escribió ningún archivo (para no pisar datos anteriores).\n"
+                         "Revisa los nombres de los repositorios y tus permisos.")
+
     # calendario de contribuciones (incluye commits, incidencias, PR y revisiones; solo conteos)
+    # OJO: GraphQL `viewer` es la cuenta autenticada en gh, no necesariamente --usuario.
+    yo = api("user") or {}
+    if yo.get("login") and yo["login"].lower() != a.usuario.lower():
+        print(f"AVISO: el calendario de contribuciones es el de la cuenta autenticada ({yo['login']}), no el de {a.usuario}.")
     q = ("query($from:DateTime!,$to:DateTime!){viewer{contributionsCollection(from:$from,to:$to){"
          "contributionCalendar{weeks{contributionDays{date contributionCount}}}}}}")
     contrib = []
@@ -384,7 +442,7 @@ def main():
              "dias_activos", "primer_commit", "ultimo_commit", "archivos", "archivos_prueba", "workflows_ci", "color"])
     escribir("lenguajes_repo.csv", leng_rows, ["repo_key", "lenguaje", "bytes", "porcentaje"])
     escribir("contribuciones_dia.csv", contrib, ["fecha", "contribuciones"])
-    informe_calidad(out, objetivos, commits_rows, repo_rows, contrib, totales, sin_det, hoy)
+    informe_calidad(out, objetivos, commits_rows, repo_rows, contrib, totales, sin_det, hoy, omitidos, sin_commits, vacios)
     print("Listo:", out)
 
 

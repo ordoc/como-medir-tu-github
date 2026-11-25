@@ -61,7 +61,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "2. Inicia sesión una sola vez:",
+                    "value": "2. Si aún no has iniciado sesión (compruébalo con gh auth status):",
                     "textStyle": {
                       "fontSize": "11pt"
                     }
@@ -93,7 +93,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "3. Genera tus datos (cambia el usuario y los repositorios):",
+                    "value": "3. Genera tus datos (cambia TU-USUARIO por tu usuario; toma todos tus repositorios propios):",
                     "textStyle": {
                       "fontSize": "11pt"
                     }
@@ -103,7 +103,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "  python extraer_actividad_github.py --usuario TU-USUARIO --repos repo-1 repo-2 --salida Datos_reales",
+                    "value": "  python extraer_actividad_github.py --usuario TU-USUARIO --salida Datos_reales",
                     "textStyle": {
                       "fontSize": "10pt",
                       "fontWeight": "bold",
@@ -145,7 +145,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "5. Pulsa Actualizar. Para renovar el informe, repite el paso 3 (solo consulta los commits nuevos) y vuelve a actualizar.",
+                    "value": "5. Pulsa Aplicar cambios y luego Actualizar. Para renovar el informe, repite el paso 3 (solo consulta los commits nuevos) y vuelve a actualizar.",
                     "textStyle": {
                       "fontSize": "11pt"
                     }
@@ -177,6 +177,16 @@
               {
                 "textRuns": [
                   {
+                    "value": "• --repos a b: mide solo esos repositorios. --excluir a b: deja algunos fuera. --listar: muestra cuáles tomaría.",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
                     "value": "• --anonimo propietario/repo=alias: incluye un repositorio de terceros sin revelar su nombre.",
                     "textStyle": {
                       "fontSize": "11pt"
@@ -187,17 +197,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "• --utc-offset -5: tu zona horaria.",
-                    "textStyle": {
-                      "fontSize": "11pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "• --completo: recalcula todo, sin usar la caché.",
+                    "value": "• --utc-offset -5: tu zona horaria. --completo: recalcula todo, sin usar la caché.",
                     "textStyle": {
                       "fontSize": "11pt"
                     }

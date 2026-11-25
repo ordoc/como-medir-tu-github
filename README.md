@@ -35,14 +35,23 @@ Al abrir el proyecto por primera vez, los visuales aparecen vacíos hasta que ap
 Necesitas [GitHub CLI](https://cli.github.com) y Python 3.9 o superior. No hay tokens en ningún archivo: el script usa tu sesión de `gh`.
 
 ```bash
-gh auth login        # una sola vez
-python extraer_actividad_github.py --usuario TU-USUARIO --repos repo-1 repo-2 repo-3 --salida Datos_reales
+gh auth status       # si ya dice que estás conectado, salta el siguiente comando
+gh auth login        # solo la primera vez
+python extraer_actividad_github.py --usuario TU-USUARIO --salida Datos_reales
 ```
+
+**Reemplaza `TU-USUARIO` por tu usuario de GitHub.** Sin más opciones, el script toma **todos tus repositorios propios**, incluidos los privados, y deja fuera los forks y los archivados. Para ver cuáles tomaría, sin extraer nada, añade `--listar`.
+
+Si el script no puede leer ningún repositorio, se detiene sin escribir nada. Si indicas repositorios con `--repos` y no puede leer alguno, sigue con el resto y lo marca como `REVISAR` en el informe de calidad. El calendario de contribuciones es siempre el de la cuenta con la que iniciaste sesión en `gh`.
 
 Opciones útiles:
 
 | Opción | Para qué sirve |
 |---|---|
+| `--repos repo-1 repo-2` | Medir solo esos repositorios, en lugar de todos los propios. |
+| `--excluir repo-a repo-b` | Dejar fuera algunos repositorios de la búsqueda automática. |
+| `--con-forks`, `--con-archivados` | Incluir también los forks o los archivados, que por defecto se omiten. |
+| `--listar` | Mostrar qué repositorios se medirían y terminar, sin extraer nada. |
 | `--anonimo propietario/repo=alias` | Incluir un repositorio de terceros con un alias; su nombre real nunca se escribe en la salida. Se puede repetir. |
 | `--utc-offset -5` | Tu zona horaria (por defecto UTC-5). |
 | `--desde 2022` | Año inicial del calendario de contribuciones. |
